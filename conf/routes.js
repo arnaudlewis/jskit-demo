@@ -1,10 +1,10 @@
-import Router from '../Router'
-import Website from '../controllers/Website'
-import Prismic from '../controllers/Prismic'
+import Router from '../app/Router'
+import Website from '../app/controllers/Website'
+import Prismic from '../app/controllers/Prismic'
 
 export default function (app) {
   //must be the first to set the API Context in the locals for templates
-  app.route(Router.all).get(Prismic.initCtx)
+  //app.route(Router.all).get(Prismic.initCtx)
 
   //prismic preview
   app.route(Router.preview).get(Prismic.preview)

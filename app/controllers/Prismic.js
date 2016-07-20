@@ -1,6 +1,6 @@
 import Error from '../utils/Error'
 import prismic from 'prismic.io'
-import configuration from '../conf/prismic-configuration'
+import configuration from '../../conf/prismic-configuration'
 
 const linkResolver = (doc, ctx) => {
   return '/'
