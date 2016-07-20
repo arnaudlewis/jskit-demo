@@ -3,5 +3,4 @@ extends ./layout.pug
 block body
     div.welcome
       h1 #{doc.getText("demo.text")}
-
-      != doc.getStructuredText("demo.body").asHtml(ctx.linkResolver)
+      a(href=Router.index) Go Back Home :D

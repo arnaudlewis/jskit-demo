@@ -1,9 +1,13 @@
 import Error from '../utils/Error'
 import prismic from 'prismic.io'
 import configuration from '../../conf/prismic-configuration'
+import Router from '../Router'
 
 const linkResolver = (doc, ctx) => {
-  return '/'
+  console.log(doc)
+  if(doc.uid === 'demo-page') return Router.index
+  if (doc.type === 'demo') return Router.page(doc.uid)
+  else return Router.notFound
 }
 
 export default {
@@ -16,9 +20,8 @@ export default {
     // So we can use this information in the views
     res.locals.ctx = {
       endpoint: configuration.apiEndpoint,
-      linkResolver: configuration.linkResolver
+      linkResolver: linkResolver
     }
-    res.locals.linkResolver = linkResolver
     next()
   },
 
@@ -33,7 +36,7 @@ export default {
   preview(req, res) {
     api(req, res)
       .then(function(api) {
-        return Prismic.preview(api, configuration.linkResolver, req, res)
+        return Prismic.preview(api, linkResolver, req, res)
       }).catch(function(err) {
         Error.handle(err, req, res)
       })
