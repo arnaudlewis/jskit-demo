@@ -2,29 +2,32 @@
 /**
  * Module dependencies.
  */
-var express = require('express'),
-    favicon = require('serve-favicon'),
-    logger = require('morgan'),
-    bodyParser = require('body-parser'),
-    methodOverride = require('method-override'),
-    errorHandler = require('errorhandler'),
-    http = require('http'),
-    path = require('path');
+import express from 'express'
+import favicon from 'serve-favicon'
+import logger from 'morgan'
+import bodyParser from 'body-parser'
+import methodOverride from 'method-override'
+import errorHandler from 'errorhandler'
+import http from 'http'
+import path from 'path'
+import routes from './routes'
 
-module.exports = function() {
+export default (function() {
   var app = express();
 
   // all environments
-  app.set('port', process.env.PORT || 3000);
-  app.set('views', path.join(__dirname, 'views'));
-  app.set('view engine', 'pug');
-  app.use(favicon("public/images/punch.png"));
-  app.use(logger('dev'));
-  app.use(bodyParser());
-  app.use(methodOverride());
-  app.use(express.static(path.join(__dirname, 'public')));
+  app.set('port', process.env.PORT || 3000)
+  app.set('views', path.join(__dirname, '../views'))
+  app.set('view engine', 'pug')
+  app.use(favicon("public/images/punch.png"))
+  app.use(logger('dev'))
+  app.use(bodyParser())
+  app.use(methodOverride())
+  app.use(express.static(path.join(__dirname, 'public')))
 
-  app.use(errorHandler());
+  app.use(errorHandler())
 
-  return app;
-}();
+  routes(app)
+
+  return app
+})()
