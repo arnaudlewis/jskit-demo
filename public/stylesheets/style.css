@@ -24,17 +24,24 @@ h1 {
 }
 
 .welcome {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    height: 100vh;
+    width: 100%;
+    background-color: #E9E9E9;
     text-align: center;
-    width: 35.625rem;
-    margin: auto;
     font-size: 1.25rem;
 }
 
-.welcome .star {
+.welcome .welcome-wrapper {
+    position: absolute;
+    width: 650px;
+    top: 50%;
+    left: 50%;
+    margin: auto;
+    transform: translate(-50%, -50%);
+}
+
+
+.welcome img {
     width: 14.875rem;
     margin-bottom: 2rem;
 }

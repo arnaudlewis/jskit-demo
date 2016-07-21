@@ -7,8 +7,9 @@ block body
       - var url = view ? view.url : ''
       - var alt = view ? view.alt : ''
 
-      img(src=url alt=alt)
+      div.welcome-wrapper
+        img(src=url alt=alt)
 
-      h1 #{doc.getText("demo.text")} (Text)
+        h1 #{doc.getText("demo.text")}
 
-      != doc.getStructuredText("demo.body").asHtml(ctx.linkResolver)
+        != doc.getStructuredText("demo.body").asHtml(ctx.linkResolver)
