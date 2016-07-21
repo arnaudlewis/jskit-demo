@@ -13,3 +13,26 @@ block body
         h1 #{doc.getText("demo.text")}
 
         != doc.getStructuredText("demo.body").asHtml(ctx.linkResolver)
+
+    div.content
+      h2 UID
+      p #{doc.uid}
+
+      section
+        h2 Text
+        != doc.getText("demo.text")
+      section
+        h2 Select
+        != doc.get("demo.select").value
+      section
+        h2 Timestamp
+        != doc.getTimestamp("demo.timestamp")
+      section
+        h2 Date
+        != doc.getDate("demo.date")
+
+      h2 Number
+      != doc.getNumber("demo.number")
+
+      h2 StructuredText
+      != doc.getStructuredText("demo.body").asHtml(ctx.linkResolver)
