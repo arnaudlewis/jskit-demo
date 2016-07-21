@@ -2,6 +2,13 @@ extends ./layout.pug
 
 block body
     div.welcome
-      h1 #{doc.getText("demo.text")}
+      - var img = doc.getImage("demo.photo")
+      - var view = img ? img.main : null
+      - var url = view ? view.url : ''
+      - var alt = view ? view.alt : ''
+
+      img(src=url alt=alt)
+
+      h1 #{doc.getText("demo.text")} (Text)
 
       != doc.getStructuredText("demo.body").asHtml(ctx.linkResolver)

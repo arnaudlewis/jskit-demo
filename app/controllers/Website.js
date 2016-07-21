@@ -7,7 +7,10 @@ export default {
     Prismic.api(req, res)
       .then((api) => {
         api.getByUID("demo", "demo-page")
-          .then((doc) => res.render('index', {'doc': doc}))
+          .then((doc) => {
+            console.log(doc)
+            res.render('index', {'doc': doc})
+          })
           .catch((err) => res.redirect(Router.notFound))
         })
       .catch((err) => Error.handle(err, req, res))
