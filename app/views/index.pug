@@ -3,6 +3,10 @@ extends ./layout.pug
 block body
   div.content
     section
+      h2 The full document
+      pre
+        != JSON.stringify(doc, null, "\t")
+    section
       h2 Text
       != doc.text
     section
