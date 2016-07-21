@@ -60,7 +60,16 @@ h1 {
 }
 
 h2 {
+    border-bottom: 2px solid gainsboro;
+    padding-bottom: 10px;
     font-size: 2rem;
+    font-weight: bold;
+    color: #fdbd58;
+    margin: 2rem auto 1rem;
+}
+
+h3 {
+    font-size: 1.3rem;
     font-weight: bold;
     color: #fdbd58;
     margin: 1rem auto 2rem;

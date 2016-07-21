@@ -1,38 +1,29 @@
 extends ./layout.pug
 
 block body
-    div.welcome
-      - var img = doc.getImage("demo.photo")
-      - var view = img ? img.main : null
-      - var url = view ? view.url : ''
-      - var alt = view ? view.alt : ''
+  div.content
+    section
+      h2 Text
+      != doc.text
+    section
+      h2 Select
+      != doc.select
+    section
+      h2 Timestamp
+      != doc.timestamp
+    section
+      h2 Date
+      != doc.date
 
-      div.welcome-wrapper
-        img(src=url alt=alt)
+    h2 Number
+    != doc.number
 
-        h1 #{doc.getText("demo.text")}
-
-        != doc.getStructuredText("demo.body").asHtml(ctx.linkResolver)
-
-    div.content
-      h2 UID
-      p #{doc.uid}
-
-      section
-        h2 Text
-        != doc.getText("demo.text")
-      section
-        h2 Select
-        != doc.get("demo.select").value
-      section
-        h2 Timestamp
-        != doc.getTimestamp("demo.timestamp")
-      section
-        h2 Date
-        != doc.getDate("demo.date")
-
-      h2 Number
-      != doc.getNumber("demo.number")
-
-      h2 StructuredText
-      != doc.getStructuredText("demo.body").asHtml(ctx.linkResolver)
+    h2 StructuredText
+    h3 HTML
+    != doc.body.asHtml(ctx.linkResolver)
+    h3 Text
+    != doc.body.asText()
+    h3 Title
+    != doc.body.title
+    h3 Value
+    != JSON.stringify(doc.body.value)
