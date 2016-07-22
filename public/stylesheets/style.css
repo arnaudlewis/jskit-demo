@@ -74,3 +74,12 @@ h3 {
     color: #fdbd58;
     margin: 1rem auto 2rem;
 }
+
+b {
+    font-weight: 800;
+    margin-right: 0.5rem
+}
+
+p {
+    margin: 1rem 0
+}

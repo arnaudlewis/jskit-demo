@@ -18,9 +18,32 @@ block body
     section
       h2 Date
       != doc.date
-
-    h2 Number
-    != doc.number
+    section
+      h2 Number
+      != doc.number
+    section
+      h2 Range
+      != doc.range
+    section
+      h2 Color
+      != doc.color
+    section
+      h2 GeoPoint
+      != JSON.stringify(doc.location, null, "\t")
+      p
+        b latitude:
+        != doc.location.latitude
+      p
+        b longitude:
+        != doc.location.longitude
+    section
+      h2 Embed
+      p
+        b URL :
+        != doc.embed.url
+      p
+        b HTML :
+        != doc.embed.html
 
     h2 StructuredText
     h3 HTML
@@ -31,3 +54,28 @@ block body
     != doc.body.title
     h3 Value
     != JSON.stringify(doc.body.value)
+
+    h2 Links
+    h3 WebLink
+    p
+      b URL
+      != doc.weblink.url
+    p
+      b HTML
+      != doc.weblink.asHtml()
+
+    h3 MediaLink
+    p
+      b URL
+      != doc.medialink.url
+    p
+      b HTML
+      != doc.medialink.asHtml()
+
+    h3 DocumentLink
+    p
+      b URL
+      != doc.documentlink.url
+    p
+      b HTML
+      != doc.documentlink.asHtml(ctx.linkResolver)
