@@ -79,3 +79,11 @@ block body
     p
       b HTML
       != doc.documentlink.asHtml(ctx.linkResolver)
+
+    h3 Any Link
+    p
+      b URL
+      != doc.link.url
+    p
+      b HTML
+      != doc.link.asHtml(ctx.linkResolver)
