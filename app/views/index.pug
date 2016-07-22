@@ -87,3 +87,19 @@ block body
     p
       b HTML
       != doc.link.asHtml(ctx.linkResolver)
+
+    h2 Image
+    h3 Main
+    p
+      b html
+      != doc.photo.asHtml()
+    p
+      b url
+      != doc.photo.url
+    h3 Medium View
+    p
+      b html
+      != doc.photo.medium.asHtml()
+    p
+      b url
+      != doc.photo.medium.url
