@@ -53,8 +53,13 @@ block body
     h3 Title
     != doc.body.title
     h3 Value
-    != JSON.stringify(doc.body.value)
-
+    != JSON.stringify(doc.body.value, null, "\t")
+    h3 First title
+    != JSON.stringify(doc.body.firstTitle(), null, "\t")
+    h3 First Image
+    != JSON.stringify(doc.body.firstImage(), null, "\t")
+    h3 First paragraph
+    != JSON.stringify(doc.body.firstParagraph(), null, "\t")
     h2 Links
     h3 WebLink
     p
@@ -103,3 +108,42 @@ block body
     p
       b url
       != doc.photo.medium.url
+
+    h2 Group
+    h3 Value
+    != JSON.stringify(doc.linksgroup, null, "\t")
+    h3 Image
+    != JSON.stringify(doc.linksgroup.firstImage(), null, "\t")
+    h3 Title
+    != JSON.stringify(doc.linksgroup.firstTitle(), null, "\t")
+    h3 Paragraph
+    != JSON.stringify(doc.linksgroup.firstParagraph(), null, "\t")
+    h3 the label
+    each groupDoc in doc.linksgroup.docs
+      != groupDoc.label.asHtml(ctx.linkResolver)
+      != groupDoc.link.asHtml()
+
+    h2 SliceZone
+    h3 Value
+    != JSON.stringify(doc.contentslices, null, "\t")
+    h3 Image
+    != JSON.stringify(doc.contentslices.firstImage(), null, "\t")
+    h3 Title
+    != JSON.stringify(doc.contentslices.firstTitle(), null, "\t")
+    h3 Paragraph
+    != JSON.stringify(doc.contentslices.firstParagraph(), null, "\t")
+
+    h2 Slices
+    each slice in doc.contentslices.slices
+      h3 Value
+      != JSON.stringify(slice, null, "\t")
+      h3 SliceType
+      != slice.sliceType
+      h3 Label
+      != slice.label
+      h3 Image
+      != JSON.stringify(slice.firstImage(), null, "\t")
+      h3 Title
+      != JSON.stringify(slice.firstTitle(), null, "\t")
+      h3 Paragraph
+      != JSON.stringify(slice.firstParagraph(), null, "\t")

@@ -34,7 +34,7 @@ function preview (req, res) {
   api(req, res)
     .then(function(api) {
       api.previewSession(previewToken, linkResolver, '/', function(err, redirectUrl) {
-        res.cookie(Prismic.previewCookie, previewToken, { maxAge: 60 * 30, path: '/', httpOnly: false });
+        res.cookie(Prismic.previewCookie, previewToken, { maxAge: 60 * 30 * 1000, path: '/', httpOnly: false });
         res.redirect(redirectUrl);
       })
     })

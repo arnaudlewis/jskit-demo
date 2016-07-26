@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "private": false,
   "scripts": {
-    "start": "babel-watch app/app.js -w ./app/",
+    "start": "babel ./app/ -d dist; node dist/app.js",
+    "watch": "babel-watch app/app.js -w ./app/",
     "build": "babel ./app/ -d dist",
     "serve": "node dist/app.js"
   },
