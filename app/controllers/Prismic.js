@@ -1,5 +1,5 @@
 import Error from '../utils/Error'
-import Prismic from 'prismic.io'
+import Prismic from 'alw-prismic.io'
 import configuration from '../conf/prismic-configuration'
 import Router from '../Router'
 

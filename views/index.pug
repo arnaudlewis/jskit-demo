@@ -65,46 +65,28 @@ block body
     p
       b URL
       != doc.weblink.url
-    p
-      b HTML
-      != doc.weblink.asHtml()
 
     h3 MediaLink
     p
       b URL
       != doc.medialink.url
-    p
-      b HTML
-      != doc.medialink.asHtml()
 
     h3 DocumentLink
     p
       b URL
       != doc.documentlink.url
-    p
-      b HTML
-      != doc.documentlink.asHtml(ctx.linkResolver)
 
     h3 Any Link
     p
       b URL
       != doc.link.url
-    p
-      b HTML
-      != doc.link.asHtml(ctx.linkResolver)
 
     h2 Image
     h3 Main
     p
-      b html
-      != doc.photo.asHtml()
-    p
       b url
       != doc.photo.url
     h3 Medium View
-    p
-      b html
-      != doc.photo.medium.asHtml()
     p
       b url
       != doc.photo.medium.url
@@ -112,38 +94,33 @@ block body
     h2 Group
     h3 Value
     != JSON.stringify(doc.linksgroup, null, "\t")
-    h3 Image
-    != JSON.stringify(doc.linksgroup.firstImage(), null, "\t")
-    h3 Title
-    != JSON.stringify(doc.linksgroup.firstTitle(), null, "\t")
-    h3 Paragraph
-    != JSON.stringify(doc.linksgroup.firstParagraph(), null, "\t")
     h3 the label
-    each groupDoc in doc.linksgroup.docs
+    each groupDoc in doc.linksgroup
       != groupDoc.label.asHtml(ctx.linkResolver)
-      != groupDoc.link.asHtml()
+      != groupDoc.link.url
 
     h2 SliceZone
     h3 Value
     != JSON.stringify(doc.contentslices, null, "\t")
-    h3 Image
-    != JSON.stringify(doc.contentslices.firstImage(), null, "\t")
-    h3 Title
-    != JSON.stringify(doc.contentslices.firstTitle(), null, "\t")
-    h3 Paragraph
-    != JSON.stringify(doc.contentslices.firstParagraph(), null, "\t")
 
     h2 Slices
-    each slice in doc.contentslices.slices
+    each slice in doc.contentslices
       h3 Value
       != JSON.stringify(slice, null, "\t")
       h3 SliceType
-      != slice.sliceType
+      != slice._sliceType
       h3 Label
-      != slice.label
-      h3 Image
-      != JSON.stringify(slice.firstImage(), null, "\t")
-      h3 Title
-      != JSON.stringify(slice.firstTitle(), null, "\t")
-      h3 Paragraph
-      != JSON.stringify(slice.firstParagraph(), null, "\t")
+      != slice._label
+
+      h3 iteration over the group in slice
+      case slice._sliceType
+        when 'section-header'
+          b section header
+          p
+            for groupDoc in slice.value
+              != groupDoc.title.asText()
+              != groupDoc.summary.asHtml(ctx.linkResolver)
+
+        when 'toto'
+          b video banner
+          != slice.value.url
